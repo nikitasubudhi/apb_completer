@@ -22,6 +22,8 @@ module tb;
   environment env;
   apb_back2back_write_test b2bwrite;
   apb_back2back_read_test b2bread;
+  apb_wr_mix_test wrmix;
+  apb_random_rw_test randomrw;
   
 //    initial begin
 //      vif.presetn=1'b0;
@@ -40,23 +42,30 @@ module tb;
             .prdata(vif.prdata),
             .pready(vif.pready),
             .pslverr(vif.pslverr));
+//to run the following testcases we have to uncomment the particular testcase line and run it and comment all other testcases line
   
   initial begin
 //      env=new(vif);
-      b2bwrite=new(vif);
-      b2bread=new(vif,b2bwrite);
-    
+//      b2bwrite=new(vif);
+//      b2bread=new(vif,b2bwrite);
+//      wrmix=new(vif);
+      randomrw=new(vif);
       fork
         begin
 //          env.run(); 
         end
+//to run the following testcases we have to uncomment the particular testcase line and run it and comment all other testcases line        
         
         begin
 //          repeat(12)@(posedge vif.pclk);
-          b2bwrite.reset();
-          b2bwrite.write();
-          b2bread.reset();
-          b2bread.read();
+//           b2bwrite.reset();
+//           b2bwrite.write();
+//           b2bread.reset();
+//           b2bread.read();
+//           wrmix.reset();
+//           wrmix.write_read();
+          randomrw.reset();
+          randomrw.write_read();
         end
         
       join

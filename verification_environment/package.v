@@ -7,5 +7,7 @@ package my_pkg;
 `include "environment.sv"
 `include "apb_back2back_write_test.sv"
 `include "apb_back2back_read_test.sv"
+`include "apb_wr_mix_test.sv"
+`include "apb_random_rw_test.sv"
 
 endpackage
